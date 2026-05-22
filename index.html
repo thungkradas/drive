@@ -42,21 +42,22 @@ body{font-family:'Prompt',sans-serif;background:var(--bg);color:var(--text);min-
 [data-theme="light"] #starCanvas{opacity:.25}
 
 /* HEADER */
-.header{position:sticky;top:0;z-index:100;background:rgba(22,20,26,.85);border-bottom:1px solid var(--border);padding:0 1.5rem;backdrop-filter:blur(12px)}
-[data-theme="light"] .header{background:rgba(255,255,255,.88)}
-.header-top{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0 .7rem;gap:1rem}
-.logo{font-size:17px;font-weight:600;letter-spacing:-.02em}
+.header{position:sticky;top:0;z-index:100;background:rgba(22,20,26,.9);border-bottom:1px solid var(--border);padding:0 1rem;backdrop-filter:blur(12px)}
+[data-theme="light"] .header{background:rgba(255,255,255,.92)}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0 .6rem;gap:8px;flex-wrap:nowrap}
+.logo{font-size:16px;font-weight:600;letter-spacing:-.02em;white-space:nowrap;flex-shrink:0}
 .logo span{color:var(--accent)}
-.header-right{display:flex;align-items:center;gap:7px}
-.search-box{display:flex;align-items:center;gap:7px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 11px;width:210px;transition:border-color .2s,width .3s}
-.search-box:focus-within{border-color:var(--accent);width:270px}
+.header-right{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.search-box{display:flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 10px;width:130px;transition:border-color .2s,width .25s;min-width:0}
+.search-box:focus-within{border-color:var(--accent);width:160px}
 .search-box svg{color:var(--text3);flex-shrink:0}
-.search-box input{background:none;border:none;outline:none;font-family:'Prompt',sans-serif;font-size:13px;color:var(--text);width:100%}
+.search-box input{background:none;border:none;outline:none;font-family:'Prompt',sans-serif;font-size:13px;color:var(--text);width:100%;min-width:0}
 .search-box input::placeholder{color:var(--text3)}
-.icon-btn{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.icon-btn{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
 .icon-btn:hover{border-color:var(--accent);color:var(--accent)}
-.sheet-tabs{display:flex;gap:3px}
-.sheet-tab{padding:7px 20px;border-radius:8px 8px 0 0;border:1px solid transparent;border-bottom:none;font-family:'Prompt',sans-serif;font-size:13px;font-weight:500;cursor:pointer;color:var(--text2);background:none;transition:all .2s;position:relative;bottom:-1px}
+.sheet-tabs{display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sheet-tabs::-webkit-scrollbar{display:none}
+.sheet-tab{padding:7px 16px;border-radius:8px 8px 0 0;border:1px solid transparent;border-bottom:none;font-family:'Prompt',sans-serif;font-size:13px;font-weight:500;cursor:pointer;color:var(--text2);background:none;transition:all .2s;position:relative;bottom:-1px;white-space:nowrap;flex-shrink:0}
 .sheet-tab:hover{color:var(--text);background:var(--surface2)}
 .sheet-tab.active{color:var(--accent);background:var(--surface);border-color:var(--border);border-bottom-color:var(--surface)}
 
@@ -175,24 +176,51 @@ body{font-family:'Prompt',sans-serif;background:var(--bg);color:var(--text);min-
 
 /* TABLE (เบส/บรัช) */
 .table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-.simple-table{width:100%;border-collapse:collapse;font-size:13px}
-.simple-table th{text-align:left;padding:9px 14px;background:var(--surface2);color:var(--text3);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border)}
-.simple-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}
+.simple-table{width:100%;border-collapse:collapse;font-size:13px;min-width:480px}
+.simple-table th{text-align:left;padding:9px 14px;background:var(--surface2);color:var(--text3);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border);white-space:nowrap}
+.simple-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle;word-break:break-word}
 .simple-table tr:last-child td{border-bottom:none}
 .simple-table tr:hover td{background:var(--surface2)}
-.tbl-link{color:var(--accent);text-decoration:none;font-size:12px;padding:2px 8px;border-radius:5px;border:1px solid var(--accent-light);background:var(--accent-light)}
+.tbl-link{color:var(--accent);text-decoration:none;font-size:12px;padding:2px 8px;border-radius:5px;border:1px solid var(--accent-light);background:var(--accent-light);white-space:nowrap}
 .tbl-link:hover{background:var(--accent);color:white}
+
+/* MOBILE CARD LIST for เบส/บรัช */
+.mob-list{display:none}
+.mob-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;margin-bottom:8px}
+.mob-card-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px}
+.mob-card-credit{font-size:11px;color:var(--text3);margin-bottom:6px}
+.mob-card-note{font-size:11px;color:var(--text2);margin-bottom:6px}
+.mob-card-footer{display:flex;justify-content:flex-end}
+@media(max-width:600px){
+  .table-scroll{display:none}
+  .mob-list{display:block}
+}
 
 /* LOADING */
 .loading{text-align:center;padding:4rem;color:var(--text3);font-size:14px}
 .spinner{width:26px;height:26px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
 .empty{grid-column:1/-1;text-align:center;padding:4rem 1rem;color:var(--text3)}
 
+/* CONTENT */
+.content{padding:1rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+@media(min-width:601px){
+  .content{padding:1.25rem 1.5rem}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(195px,1fr))}
+}
 @media(max-width:600px){
-  .search-box{width:140px}.search-box:focus-within{width:180px}
-  .content{padding:1rem}.header{padding:0 1rem}
-  .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
-  .sheet-tab{padding:7px 12px;font-size:12px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .card{padding:10px}
+  .card-name{font-size:13px}
+  .ef-table th,.ef-table td{padding:8px 10px;font-size:12px}
+  .stats-bar{gap:5px}
+  .stat-chip{font-size:10px;padding:3px 9px}
+  .cat-filter{gap:4px}
+  .cat-btn{font-size:11px;padding:3px 10px}
+  .toolbar{gap:4px}
+  .sort-btn{font-size:11px;padding:3px 9px}
+  .ef-panel-title{font-size:13px}
+  .ef-panel-sub{font-size:10px}
 }
 </style>
 </head>
@@ -561,6 +589,30 @@ function renderSimpleSheet(raw){
   for(let i=0;i<Math.min(8,raw.length);i++){if(raw[i].some(c=>String(c||'').trim())){hIdx=i;break;}}
   const rows=raw.slice(hIdx+1).filter(r=>String(r[2]||'').trim()||String(r[3]||'').trim());
   const filtered=q?rows.filter(r=>r.some(c=>String(c).toLowerCase().includes(q))):rows;
+
+  const rowsHtml=filtered.length?filtered.map(r=>{
+    const cr=esc(String(r[1]||'').trim());
+    const nm=esc(String(r[2]||'').trim());
+    const ur=String(r[3]||'').trim();
+    const nt=esc(String(r[4]||'').trim());
+    const lk=ur.startsWith('http')?`<a class="tbl-link" href="${ur}" target="_blank" rel="noopener">เปิด</a>`:(ur?esc(ur):'—');
+    return`<tr><td>${cr||'—'}</td><td>${nm||'—'}</td><td>${lk}</td><td>${nt||'—'}</td></tr>`;
+  }).join(''):`<tr><td colspan="4" style="text-align:center;color:var(--text3);padding:2rem">ไม่พบข้อมูล</td></tr>`;
+
+  const mobHtml=filtered.length?filtered.map(r=>{
+    const cr=esc(String(r[1]||'').trim());
+    const nm=esc(String(r[2]||'').trim());
+    const ur=String(r[3]||'').trim();
+    const nt=esc(String(r[4]||'').trim());
+    const lk=ur.startsWith('http')?`<a class="tbl-link" href="${ur}" target="_blank" rel="noopener">เปิด</a>`:'';
+    return`<div class="mob-card">
+      <div class="mob-card-name">${nm||'—'}</div>
+      ${cr?`<div class="mob-card-credit">${cr}</div>`:''}
+      ${nt?`<div class="mob-card-note">${nt}</div>`:''}
+      ${lk?`<div class="mob-card-footer">${lk}</div>`:''}
+    </div>`;
+  }).join(''):`<div style="text-align:center;color:var(--text3);padding:2rem;font-size:13px">ไม่พบข้อมูล</div>`;
+
   document.getElementById('mainContent').innerHTML=`
     <div class="stats-bar">
       <div class="stat-chip">ทั้งหมด <strong>${rows.length}</strong> รายการ</div>
@@ -569,17 +621,13 @@ function renderSimpleSheet(raw){
         ${timeStr?'อัปเดต '+timeStr:'รีเฟรช'}
       </button>
     </div>
-    <div class="table-wrap"><table class="simple-table">
-      <thead><tr><th>เครดิต</th><th>ชื่อ</th><th>ลิงก์</th><th>หมายเหตุ</th></tr></thead>
-      <tbody>${filtered.length?filtered.map(r=>{
-        const cr=esc(String(r[1]||'').trim());
-        const nm=esc(String(r[2]||'').trim());
-        const ur=String(r[3]||'').trim();
-        const nt=esc(String(r[4]||'').trim());
-        const lk=ur.startsWith('http')?`<a class="tbl-link" href="${ur}" target="_blank" rel="noopener">เปิด</a>`:(ur?esc(ur):'—');
-        return`<tr><td>${cr||'—'}</td><td>${nm||'—'}</td><td>${lk}</td><td>${nt||'—'}</td></tr>`;
-      }).join(''):`<tr><td colspan="4" style="text-align:center;color:var(--text3);padding:2rem">ไม่พบข้อมูล</td></tr>`}</tbody>
-    </table></div>`;
+    <div class="table-wrap">
+      <div class="table-scroll"><table class="simple-table">
+        <thead><tr><th>เครดิต</th><th>ชื่อ</th><th>ลิงก์</th><th>หมายเหตุ</th></tr></thead>
+        <tbody>${rowsHtml}</tbody>
+      </table></div>
+    </div>
+    <div class="mob-list">${mobHtml}</div>`;
 }
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
